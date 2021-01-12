@@ -93,13 +93,14 @@ Types (Number, Boolean, String...)
     Enum exists in other programming languages but  not in JS
     */
     {
+        // default enum
         var Roles = void 0;
         (function (Roles) {
             Roles[Roles["ADMIN"] = 0] = "ADMIN";
             Roles[Roles["READ_ONLY"] = 1] = "READ_ONLY";
-            Roles[Roles["ATHOR"] = 2] = "ATHOR";
+            Roles[Roles["AUTHOR"] = 2] = "AUTHOR";
         })(Roles || (Roles = {}));
-        ;
+        ; //assigns 0, 1, 2 as keys to the enum
         var person6 = {
             name: "Nick",
             age: 23,
@@ -111,10 +112,62 @@ Types (Number, Boolean, String...)
             console.log("Enum", "role is Author");
         }
         else if (person6.role === Roles.ADMIN) {
-            console.log("Enum", "role is Author");
+            console.log("Enum", "role is Admin");
         }
         else if (person6.role === Roles.READ_ONLY) {
             console.log("Enum", "role is readOnly");
         }
+        // custom enum
+        var Roles1 = void 0;
+        (function (Roles1) {
+            Roles1[Roles1["ADMIN"] = 5] = "ADMIN";
+            Roles1[Roles1["READ_ONLY"] = 6] = "READ_ONLY";
+            Roles1[Roles1["AUTHOR"] = 7] = "AUTHOR";
+        })(Roles1 || (Roles1 = {}));
+        ; //assigns 5, 6, 7 as keys to the enum
+        var person7 = {
+            name: "Nick",
+            age: 23,
+            hobbies: ["sports", "cooking"],
+            role: Roles1.ADMIN
+        };
+        console.log("Enum", person7);
+        if (person7.role === Roles1.AUTHOR) {
+            console.log("Enum", "role is Author");
+        }
+        else if (person7.role === Roles1.ADMIN) {
+            console.log("Enum", "role is Admin");
+        }
+        else if (person7.role === Roles1.READ_ONLY) {
+            console.log("Enum", "role is readOnly");
+        }
+        // custom enum
+        var Roles2 = void 0;
+        (function (Roles2) {
+            Roles2["ADMIN"] = "Administrator";
+            Roles2[Roles2["READ_ONLY"] = 6] = "READ_ONLY";
+            Roles2[Roles2["AUTHOR"] = 100] = "AUTHOR";
+        })(Roles2 || (Roles2 = {}));
+        ; //assigns 5, 6, 7 as keys to the enum
+        var person8 = {
+            name: "Nick",
+            age: 23,
+            hobbies: ["sports", "cooking"],
+            role: Roles2.ADMIN
+        };
+        console.log("Enum", person8);
+        if (person8.role === Roles2.AUTHOR) {
+            console.log("Enum", "role is Author");
+        }
+        else if (person8.role === Roles2.ADMIN) {
+            console.log("Enum", "role is Admin");
+        }
+        else if (person8.role === Roles2.READ_ONLY) {
+            console.log("Enum", "role is readOnly");
+        }
     }
+    /*
+    Any is the most flexible as it does not tell ts anything and allow any type for the variable
+    not recomended to use as its same to vanila js and does not do an ts checks
+    */
 }
