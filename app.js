@@ -190,13 +190,14 @@ Types (Number, Boolean, String...)
         }
     }
     ;
-    var comnineAges = combnine("12", "23", "as-number");
-    console.log("union type", comnineAges);
-    var comninestr = combnine(12, 23, "as-string");
-    console.log("union type", comninestr);
-    var comninestr2 = combnine("Amit", "23", "as-string");
-    console.log("union type", comninestr2);
+    var combineAges = combnine("12", "23", "as-number");
+    console.log("union type", combineAges);
+    var combinestr = combnine(12, 23, "as-string");
+    console.log("union type", combinestr);
+    var combinestr2 = combnine("Amit", "23", "as-string");
+    console.log("union type", combinestr2);
     //literal Strings
+    //does not allow any other value other than as-number or as-string for resultType
     function combnine1(num1, num2, resultType) {
         var result1;
         //sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
@@ -214,10 +215,33 @@ Types (Number, Boolean, String...)
         }
     }
     ;
-    var comnineAges1 = combnine1("12", "23", "as-number");
-    console.log("union type", comnineAges1);
-    var comninestr3 = combnine1(12, 23, "as-string");
-    console.log("union type", comninestr3);
-    var comninestr4 = combnine1("Amit", "23", "as-string");
-    console.log("union type", comninestr4);
+    var combineAges1 = combnine1("12", "23", "as-number");
+    console.log("literal type", combineAges1);
+    var combinestr3 = combnine1(12, 23, "as-string");
+    console.log("literal type", combinestr3);
+    var combinestr4 = combnine1("Amit", "23", "as-string");
+    console.log("literal type", combinestr4);
+    function combnine2(num1, num2, resultType) {
+        var result1;
+        //sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+        if (typeof num1 === "number" && typeof num2 === "number") {
+            result1 = num1 + num2;
+        }
+        else {
+            result1 = num1.toString() + num2.toString();
+        }
+        if (resultType === "as-string") {
+            return result1.toString();
+        }
+        else {
+            return +result1;
+        }
+    }
+    ;
+    var combineAges2 = combnine2("12", "23", "as-number");
+    console.log("alias type", combineAges2);
+    var combinestr1 = combnine2(12, 23, "as-string");
+    console.log("alias type", combinestr1);
+    var combinestr5 = combnine2("Amit", "23", "as-string");
+    console.log("alias type", combinestr5);
 }

@@ -212,12 +212,12 @@ Types (Number, Boolean, String...)
 			return +result;
 		}
 	};
-	const comnineAges = combnine("12", "23", "as-number");
-	console.log("union type", comnineAges);
-	const comninestr = combnine(12, 23, "as-string");
-	console.log("union type", comninestr);
-	const comninestr2 = combnine("Amit", "23", "as-string");
-	console.log("union type", comninestr2);
+	const combineAges = combnine("12", "23", "as-number");
+	console.log("union type", combineAges);
+	const combinestr = combnine(12, 23, "as-string");
+	console.log("union type", combinestr);
+	const combinestr2 = combnine("Amit", "23", "as-string");
+	console.log("union type", combinestr2);
 
 	//literal Strings
 	//does not allow any other value other than as-number or as-string for resultType
@@ -238,12 +238,37 @@ Types (Number, Boolean, String...)
 			return +result1;
 		}
 	};
-	const comnineAges1 = combnine1("12", "23", "as-number");
-	console.log("union type", comnineAges1);
-	const comninestr3 = combnine1(12, 23, "as-string");
-	console.log("union type", comninestr3);
-	const comninestr4 = combnine1("Amit", "23", "as-string");
-	console.log("union type", comninestr4);
+	const combineAges1 = combnine1("12", "23", "as-number");
+	console.log("literal type", combineAges1);
+	const combinestr3 = combnine1(12, 23, "as-string");
+	console.log("literal type", combinestr3);
+	const combinestr4 = combnine1("Amit", "23", "as-string");
+	console.log("literal type", combinestr4);
 
+	//type alias
+	type Combinable = number | string
+	function combnine2(num1: Combinable,
+		num2: Combinable,
+		resultType: "as-number" | "as-string"): Combinable {
+		let result1: Combinable;
+		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+		if (typeof num1 === "number" && typeof num2 === "number") {
+			result1 = num1 + num2;
+		} else {
+			result1 = num1.toString() + num2.toString();
+		}
+
+		if (resultType === "as-string") {
+			return result1.toString();
+		} else {
+			return +result1;
+		}
+	};
+	const combineAges2 = combnine2("12", "23", "as-number");
+	console.log("alias type", combineAges2);
+	const combinestr1 = combnine2(12, 23, "as-string");
+	console.log("alias type", combinestr1);
+	const combinestr5 = combnine2("Amit", "23", "as-string");
+	console.log("alias type", combinestr5);
 }
 
