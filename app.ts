@@ -2,6 +2,8 @@
 running lite-srver
 */
 // console.log("This is a ts file");
+
+
 /*
 adding types to simple functions
 */
@@ -9,11 +11,15 @@ adding types to simple functions
 // function add(num1: number, num2: number): number {
 // 	return num1 + num2;
 // };
+
 // const num1 = 20,
 // 	num2 = 8;
 // const result = add(num1, num2);
+
 // console.log(result);
 // }
+
+
 /*
 Types (Number, Boolean, String...)
 */
@@ -25,11 +31,14 @@ Types (Number, Boolean, String...)
 // 			return num1 + num2;
 // 		}
 // 	};
+
 // 	const num1 = 20,
 // 		num2 = 8,
 // 		printResult = true,
 // 		resultPhrase = "The result is ";
+
 // 	add(num1, num2, printResult, resultPhrase);
+
 // 	/*
 // 		Object
 // 	*/
@@ -43,6 +52,7 @@ Types (Number, Boolean, String...)
 // 			age: 23
 // 		};
 // 		console.log("Object", person.name);
+
 // 		//recomended
 // 		const person1 = {
 // 			name: "Nick",
@@ -50,6 +60,7 @@ Types (Number, Boolean, String...)
 // 		};
 // 		console.log("Object", person1.name);
 // 	}
+
 // 	/*
 // 	Arrays
 // 	*/
@@ -62,11 +73,13 @@ Types (Number, Boolean, String...)
 // 		let favActivities: string[];
 // 		favActivities = ["swimming"];
 // 		console.log("Arrys", person3.hobbies, favActivities);
+
 // 		//allows explicit functions to run as it knows the type of varible
 // 		for (const hobby of person3.hobbies) {
 // 			console.log("Arrys", hobby.toUpperCase());
 // 		}
 // 	}
+
 // 	/*
 // 	Tuple fixed length, fixed type arrrays (does not exist in JS but does in some other programming languages)
 // 	*/
@@ -86,6 +99,8 @@ Types (Number, Boolean, String...)
 // 		person4.role.push("admin"); //still works but not ideal
 // 		person4.role[1] = (1); //still works but not ideal
 // 		console.log("Tuple", person4);
+
+
 // 		//ts assumes it as this and allows the following modifications which aere not acceptable
 // 		const person5: {
 // 			name: string;
@@ -102,6 +117,7 @@ Types (Number, Boolean, String...)
 // 		// person5.role[1] = (1); //now throws an error
 // 		console.log("Tuple", person5)
 // 	}
+
 // 	/*
 // 	Enum exists in other programming languages but  not in JS
 // 	*/
@@ -124,6 +140,8 @@ Types (Number, Boolean, String...)
 // 		} else if (person6.role === Roles.READ_ONLY) {
 // 			console.log("Enum", "role is readOnly");
 // 		}
+
+
 // 		// custom enum
 // 		enum Roles1 {
 // 			ADMIN = 5, READ_ONLY, AUTHOR
@@ -142,6 +160,7 @@ Types (Number, Boolean, String...)
 // 		} else if (person7.role === Roles1.READ_ONLY) {
 // 			console.log("Enum", "role is readOnly");
 // 		}
+
 // 		// custom enum
 // 		enum Roles2 {
 // 			ADMIN = "Administrator",
@@ -163,61 +182,68 @@ Types (Number, Boolean, String...)
 // 			console.log("Enum", "role is readOnly");
 // 		}
 // 	}
+
 // 	/*
 // 	Any is the most flexible as it does not tell ts anything and allow any type for the variable
 // 	not recomended to use as its same to vanila js and does not do an ts checks
 // 	*/
 // }
+
+
 /*
-    Exploring union type
+	Exploring union type
 */
 {
-    //should work with numbers and strings
-    function combnine(num1, num2, resultType) {
-        var result;
-        //sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
-        if (typeof num1 === "number" && typeof num2 === "number") {
-            result = num1 + num2;
-        }
-        else {
-            result = num1.toString() + num2.toString();
-        }
-        if (resultType === "as-string") {
-            return result.toString();
-        }
-        else {
-            return +result;
-        }
-    }
-    ;
-    var comnineAges = combnine("12", "23", "as-number");
-    console.log("union type", comnineAges);
-    var comninestr = combnine(12, 23, "as-string");
-    console.log("union type", comninestr);
-    var comninestr2 = combnine("Amit", "23", "as-string");
-    console.log("union type", comninestr2);
-    //literal Strings
-    function combnine1(num1, num2, resultType) {
-        var result1;
-        //sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
-        if (typeof num1 === "number" && typeof num2 === "number") {
-            result1 = num1 + num2;
-        }
-        else {
-            result1 = num1.toString() + num2.toString();
-        }
-        if (resultType === "as-string") {
-            return result1.toString();
-        }
-        else {
-            return +result1;
-        }
-    }
-    ;
-    var comnineAges1 = combnine1("12", "23", "as-number");
-    console.log("union type", comnineAges1);
-    var comninestr3 = combnine1(12, 23, "as-string");
-    console.log("union type", comninestr3);
-    var comninestr4 = combnine1("Amit", "23", "as-string");
-    console.log("union type", comninestr4);
+	//should work with numbers and strings
+	function combnine(num1: number | string,
+		num2: number | string,
+		resultType: string): number | string {
+		let result: number | string;
+		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+		if (typeof num1 === "number" && typeof num2 === "number") {
+			result = num1 + num2;
+		} else {
+			result = num1.toString() + num2.toString();
+		}
+
+		if (resultType === "as-string") {
+			return result.toString();
+		} else {
+			return +result;
+		}
+	};
+	const comnineAges = combnine("12", "23", "as-number");
+	console.log("union type", comnineAges);
+	const comninestr = combnine(12, 23, "as-string");
+	console.log("union type", comninestr);
+	const comninestr2 = combnine("Amit", "23", "as-string");
+	console.log("union type", comninestr2);
+
+	//literal Strings
+	//does not allow any other value other than as-number or as-string for resultType
+	function combnine1(num1: number | string,
+		num2: number | string,
+		resultType: "as-number" | "as-string"): number | string {
+		let result1: number | string;
+		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+		if (typeof num1 === "number" && typeof num2 === "number") {
+			result1 = num1 + num2;
+		} else {
+			result1 = num1.toString() + num2.toString();
+		}
+
+		if (resultType === "as-string") {
+			return result1.toString();
+		} else {
+			return +result1;
+		}
+	};
+	const comnineAges1 = combnine1("12", "23", "as-number");
+	console.log("union type", comnineAges1);
+	const comninestr3 = combnine1(12, 23, "as-string");
+	console.log("union type", comninestr3);
+	const comninestr4 = combnine1("Amit", "23", "as-string");
+	console.log("union type", comninestr4);
+
 }
+
