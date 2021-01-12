@@ -273,24 +273,44 @@ Types (Number, Boolean, String...)
 // 	// combineValues1 = 5;// thros error as a number cannot be assigned to a function type
 // 	console.log("function Types", combineValues1(2, 3));
 //function type and callback
-function add3(num1, num2) {
-    return num1 + num2;
-}
-;
-function printResult2(num) {
-    console.log("Result", num);
-}
-function addAndHandle(num1, num2, callbackFunc) {
-    var result = num1 + num2;
-    callbackFunc(result);
-}
-printResult2(add3(4, 2));
-var combineValues2;
-combineValues2 = add3;
-// combineValues1 = 5;// thros error as a number cannot be assigned to a function type
-console.log("function callback", combineValues2(2, 3));
-addAndHandle(10, 20, function (num) { console.log(num); });
+// function add3(num1: number, num2: number): number {
+// 	return num1 + num2;
+// };
+// function printResult2(num: number): void {
+// 	console.log("Result", num);
+// }
+// function addAndHandle(num1: number, num2: number, callbackFunc: (num: number) => void) {
+// 	const result = num1 + num2;
+// 	callbackFunc(result);
+// }
+// printResult2(add3(4, 2));
+// let combineValues2: (a: number, b: number) => number;
+// combineValues2 = add3;
+// // combineValues1 = 5;// thros error as a number cannot be assigned to a function type
+// console.log("function callback", combineValues2(2, 3));
+// addAndHandle(10, 20, num => { console.log(num); })
 // }
 /*
-Function type and callback
+type Unknown
 */
+{
+    var userInput = void 0, userName = void 0;
+    userInput = 5;
+    userInput = "max";
+    // userName = userInput;//throws an error as unknown can be of any type
+    if (typeof userInput === "string") {
+        userName = userInput;
+    }
+}
+/*
+never type
+*/
+{
+    //the below function never returns an error. It either crases the app or goes to catch
+    //void is usually assumed as never in older code
+    //newer code shoud use never if a code never returns anything
+    function generateErr(message, code) {
+        throw { message: message, errorCode: code };
+    }
+    generateErr("unknown type of variable nice", 301);
+}
