@@ -1,6 +1,7 @@
 // console.log("This is a ts file"); //running lite-srver
 
-function add(num1, num2) {
+
+function add(num1: number, num2: number): number {
 	return num1 + num2;
 };
 
