@@ -276,33 +276,60 @@ Types (Number, Boolean, String...)
 /*
  Function type
 */
-{
-	//declaring a variable as function and using it
-	function add1(num1: number, num2: number): number {
-		return num1 + num2;
-	};
-	function printResult(num: number): void {
-		console.log("Result", num);
-	}
-	printResult1(add1(4, 2));
-	let combineValues: Function;
-	combineValues = add1;
-	// combineValues = 5;// would have been possible if combineValue was not typecasted as a function and would have resulted in a run time error
-	console.log("function Types", combineValues(2, 3));
+// {
+// 	//declaring a variable as function and using it
+// 	function add1(num1: number, num2: number): number {
+// 		return num1 + num2;
+// 	};
+// 	function printResult(num: number): void {
+// 		console.log("Result", num);
+// 	}
+// 	printResult1(add1(4, 2));
+// 	let combineValues: Function;
+// 	combineValues = add1;
+// 	// combineValues = 5;// would have been possible if combineValue was not typecasted as a function and would have resulted in a run time error
+// 	console.log("function Types", combineValues(2, 3));
 
-	//declaring function types with a return type
-	function add2(num1: number, num2: number): number {
-		return num1 + num2;
-	};
-	function printResult1(num: number): void {
-		console.log("Result", num);
-	}
-	printResult1(add2(4, 2));
-	let combineValues1: (a: number, b: number) => number;
-	combineValues1 = add2;
-	// combineValues1 = 5;// thros error as a number cannot be assigned to a function type
-	console.log("function Types", combineValues1(2, 3));
+// 	//declaring function types with a return type
+// 	function add2(num1: number, num2: number): number {
+// 		return num1 + num2;
+// 	};
+// 	function printResult1(num: number): void {
+// 		console.log("Result", num);
+// 	}
+// 	printResult1(add2(4, 2));
+// 	let combineValues1: (a: number, b: number) => number;
+// 	combineValues1 = add2;
+// 	// combineValues1 = 5;// thros error as a number cannot be assigned to a function type
+// 	console.log("function Types", combineValues1(2, 3));
 
+
+//function type and callback
+function add3(num1: number, num2: number): number {
+	return num1 + num2;
+};
+function printResult2(num: number): void {
+	console.log("Result", num);
+}
+function addAndHandle(num1: number, num2: number, callbackFunc: (num: number) => void) {
+	const result = num1 + num2;
+	callbackFunc(result);
 
 }
+printResult2(add3(4, 2));
+let combineValues2: (a: number, b: number) => number;
+combineValues2 = add3;
+// combineValues1 = 5;// thros error as a number cannot be assigned to a function type
+console.log("function callback", combineValues2(2, 3));
+
+addAndHandle(10, 20, num => { console.log(num); })
+
+
+// }
+
+
+
+/*
+Function type and callback
+*/
 
