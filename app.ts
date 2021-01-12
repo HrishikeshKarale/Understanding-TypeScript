@@ -193,82 +193,116 @@ Types (Number, Boolean, String...)
 /*
 	Exploring union type
 */
+// {
+// 	//should work with numbers and strings
+// 	function combnine(num1: number | string,
+// 		num2: number | string,
+// 		resultType: string): number | string {
+// 		let result: number | string;
+// 		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+// 		if (typeof num1 === "number" && typeof num2 === "number") {
+// 			result = num1 + num2;
+// 		} else {
+// 			result = num1.toString() + num2.toString();
+// 		}
+
+// 		if (resultType === "as-string") {
+// 			return result.toString();
+// 		} else {
+// 			return +result;
+// 		}
+// 	};
+// 	const combineAges = combnine("12", "23", "as-number");
+// 	console.log("union type", combineAges);
+// 	const combinestr = combnine(12, 23, "as-string");
+// 	console.log("union type", combinestr);
+// 	const combinestr2 = combnine("Amit", "23", "as-string");
+// 	console.log("union type", combinestr2);
+
+// 	//literal Strings
+// 	//does not allow any other value other than as-number or as-string for resultType
+// 	function combnine1(num1: number | string,
+// 		num2: number | string,
+// 		resultType: "as-number" | "as-string"): number | string {
+// 		let result1: number | string;
+// 		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+// 		if (typeof num1 === "number" && typeof num2 === "number") {
+// 			result1 = num1 + num2;
+// 		} else {
+// 			result1 = num1.toString() + num2.toString();
+// 		}
+
+// 		if (resultType === "as-string") {
+// 			return result1.toString();
+// 		} else {
+// 			return +result1;
+// 		}
+// 	};
+// 	const combineAges1 = combnine1("12", "23", "as-number");
+// 	console.log("literal type", combineAges1);
+// 	const combinestr3 = combnine1(12, 23, "as-string");
+// 	console.log("literal type", combinestr3);
+// 	const combinestr4 = combnine1("Amit", "23", "as-string");
+// 	console.log("literal type", combinestr4);
+
+// 	//type alias
+// 	type Combinable = number | string
+// 	function combnine2(num1: Combinable,
+// 		num2: Combinable,
+// 		resultType: "as-number" | "as-string"): Combinable {
+// 		let result1: Combinable;
+// 		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
+// 		if (typeof num1 === "number" && typeof num2 === "number") {
+// 			result1 = num1 + num2;
+// 		} else {
+// 			result1 = num1.toString() + num2.toString();
+// 		}
+
+// 		if (resultType === "as-string") {
+// 			return result1.toString();
+// 		} else {
+// 			return +result1;
+// 		}
+// 	};
+// 	const combineAges2 = combnine2("12", "23", "as-number");
+// 	console.log("alias type", combineAges2);
+// 	const combinestr1 = combnine2(12, 23, "as-string");
+// 	console.log("alias type", combinestr1);
+// 	const combinestr5 = combnine2("Amit", "23", "as-string");
+// 	console.log("alias type", combinestr5);
+// }
+
+
+/*
+ Function type
+*/
 {
-	//should work with numbers and strings
-	function combnine(num1: number | string,
-		num2: number | string,
-		resultType: string): number | string {
-		let result: number | string;
-		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
-		if (typeof num1 === "number" && typeof num2 === "number") {
-			result = num1 + num2;
-		} else {
-			result = num1.toString() + num2.toString();
-		}
-
-		if (resultType === "as-string") {
-			return result.toString();
-		} else {
-			return +result;
-		}
+	//declaring a variable as function and using it
+	function add1(num1: number, num2: number): number {
+		return num1 + num2;
 	};
-	const combineAges = combnine("12", "23", "as-number");
-	console.log("union type", combineAges);
-	const combinestr = combnine(12, 23, "as-string");
-	console.log("union type", combinestr);
-	const combinestr2 = combnine("Amit", "23", "as-string");
-	console.log("union type", combinestr2);
+	function printResult(num: number): void {
+		console.log("Result", num);
+	}
+	printResult1(add1(4, 2));
+	let combineValues: Function;
+	combineValues = add1;
+	// combineValues = 5;// would have been possible if combineValue was not typecasted as a function and would have resulted in a run time error
+	console.log("function Types", combineValues(2, 3));
 
-	//literal Strings
-	//does not allow any other value other than as-number or as-string for resultType
-	function combnine1(num1: number | string,
-		num2: number | string,
-		resultType: "as-number" | "as-string"): number | string {
-		let result1: number | string;
-		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
-		if (typeof num1 === "number" && typeof num2 === "number") {
-			result1 = num1 + num2;
-		} else {
-			result1 = num1.toString() + num2.toString();
-		}
-
-		if (resultType === "as-string") {
-			return result1.toString();
-		} else {
-			return +result1;
-		}
+	//declaring function types with a return type
+	function add2(num1: number, num2: number): number {
+		return num1 + num2;
 	};
-	const combineAges1 = combnine1("12", "23", "as-number");
-	console.log("literal type", combineAges1);
-	const combinestr3 = combnine1(12, 23, "as-string");
-	console.log("literal type", combinestr3);
-	const combinestr4 = combnine1("Amit", "23", "as-string");
-	console.log("literal type", combinestr4);
+	function printResult1(num: number): void {
+		console.log("Result", num);
+	}
+	printResult1(add2(4, 2));
+	let combineValues1: (a: number, b: number) => number;
+	combineValues1 = add2;
+	// combineValues1 = 5;// thros error as a number cannot be assigned to a function type
+	console.log("function Types", combineValues1(2, 3));
 
-	//type alias
-	type Combinable = number | string
-	function combnine2(num1: Combinable,
-		num2: Combinable,
-		resultType: "as-number" | "as-string"): Combinable {
-		let result1: Combinable;
-		//sometines runtime checks might be required when using union types as ts does not know about the exact type of input from the union
-		if (typeof num1 === "number" && typeof num2 === "number") {
-			result1 = num1 + num2;
-		} else {
-			result1 = num1.toString() + num2.toString();
-		}
 
-		if (resultType === "as-string") {
-			return result1.toString();
-		} else {
-			return +result1;
-		}
-	};
-	const combineAges2 = combnine2("12", "23", "as-number");
-	console.log("alias type", combineAges2);
-	const combinestr1 = combnine2(12, 23, "as-string");
-	console.log("alias type", combinestr1);
-	const combinestr5 = combnine2("Amit", "23", "as-string");
-	console.log("alias type", combinestr5);
 }
 
