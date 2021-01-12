@@ -1,0 +1,26 @@
+{
+  "name": "understanding-typescript",
+  "version": "1.0.0",
+  "description": "This is a test projet to solidify my understanding of TypeScript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HrishikeshKarale/Understanding-TypeScript.git"
+  },
+  "keywords": [
+    "TypeScript"
+  ],
+  "author": "Hrishikesh Karale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HrishikeshKarale/Understanding-TypeScript/issues"
+  },
+  "homepage": "https://github.com/HrishikeshKarale/Understanding-TypeScript#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
