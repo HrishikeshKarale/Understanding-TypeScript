@@ -330,28 +330,32 @@ Types (Number, Boolean, String...)
 /*
 type Unknown
 */
-{
-	let userInput: unknown,
-		userName: string;
+// {
+// 	let userInput: unknown,
+// 		userName: string;
 
-	userInput = 5;
-	userInput = "max";
-	// userName = userInput;//throws an error as unknown can be of any type
-	if (typeof userInput === "string") {
-		userName = userInput;
-	}
-}
+// 	userInput = 5;
+// 	userInput = "max";
+// 	// userName = userInput;//throws an error as unknown can be of any type
+// 	if (typeof userInput === "string") {
+// 		userName = userInput;
+// 	}
+// }
 
 /*
 never type
 */
-{
-	//the below function never returns an error. It either crases the app or goes to catch
-	//void is usually assumed as never in older code
-	//newer code shoud use never if a code never returns anything
-	function generateErr(message: string, code: number): never {
-		throw { message: message, errorCode: code };
-	}
+// {
+// 	//the below function never returns an error. It either crases the app or goes to catch
+// 	//void is usually assumed as never in older code
+// 	//newer code shoud use never if a code never returns anything
+// 	function generateErr(message: string, code: number): never {
+// 		throw { message: message, errorCode: code };
+// 	}
 
-	generateErr("unknown type of variable nice", 301);
-}
+// 	generateErr("unknown type of variable nice", 301);
+// }
+
+
+
+
